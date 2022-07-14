@@ -13,7 +13,7 @@ class Creacion_ambiente:
 				cursor=self.conexion.cursor()
 				
 				print("Conexión correcta")
-		except (mysql.err.OperationalError, mysql.err.InternalError) as e:
+		except (pymysql.err.OperationalError, pymysql.err.InternalError) as e:
 			print("Ocurrió un error al conectar: ", e)
 
 	def Creacion_base(self):
@@ -21,10 +21,10 @@ class Creacion_ambiente:
 		try:
 			with self.conexion.cursor() as self.cursor:
 				#Creamos la base de datos y  la ponemos en funcionamiento
-				Tabla="DROP DATABASE IF EXISTS Olist;"
+				Tabla="DROP DATABASE IF EXISTS EcomerceBrazil;"
 				self.cursor.execute(Tabla)
-				self.cursor.execute("CREATE DATABASE IF NOT EXISTS Olist;")
-				self.cursor.execute("USE Olist;")
+				self.cursor.execute("CREATE DATABASE IF NOT EXISTS EcomerceBrazil;")
+				self.cursor.execute("USE EcomerceBrazil;")
 			self.conexion.commit()
 		finally:
 			#self.conexion.close()
